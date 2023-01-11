@@ -4,7 +4,8 @@ import os
 import cv2
 from autofocus import focusing, laplacian
 
-focal_start = 100
+focal_start = 5
+#focal_start = 100
 focal_stop  = 300
 focal_step  = 5
 buffer_size = 5
