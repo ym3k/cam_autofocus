@@ -1,0 +1,18 @@
+[Unit]
+Description=G-STREAMER launcher
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=15
+StartLimitBurst=65535
+RemainAfterExit=No
+ExecStart=/opt/cam_autofocus/bin/gst_start.sh 0
+# dummy for ansible: don't want to change the runnging status
+ExecReload=/bin/true
+# insert wait for stop/restart to wait for sensors to settle down
+ExecStopPost=/bin/bash -c "echo gst restart holding down; sleep 10"
+
+[Install]
+WantedBy=multi-user.target
